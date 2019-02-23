@@ -1,25 +1,50 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import fetch from 'unfetch';
+
+function parseQuotes(text) {
+  return text.replace(/[0-9]+-/gm, '').split('\n');
+}
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      isLoading: true,
+      quotes: [],
+      currentQuote: ""
+    }
+    this.getRandomQuote = this.getRandomQuote.bind(this);
+  }
+
+  componentDidMount() {
+    // load quotes
+    fetch('/quotes.txt')
+      .then(text => text.text())
+      .then(text => parseQuotes(text))
+      .then(text => this.setState({
+        isLoading: false,
+        quotes: text,
+      }))
+      .then(() => {
+        this.getRandomQuote();
+      })
+  }
+
+  getRandomQuote() {
+
+    const { quotes } = this.state;
+    this.setState({
+      currentQuote: quotes[Math.floor(Math.random() * quotes.length)]
+    })
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        {this.state.isLoading ? <div>loading...</div> : <div>
+          <p>{this.state.currentQuote}</p>
+          <button onClick={this.getRandomQuote}>🎲</button>
+        </div>}
       </div>
     );
   }
