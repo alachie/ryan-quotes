@@ -77,6 +77,8 @@ const FooterStyled = styled.footer`
   padding-top: 2rem;
   display: flex;
   justify-content: space-between;
+  letter-spacing: 0em;
+
 `
 
 const ButtonStyled = styled.button`
@@ -117,6 +119,7 @@ const QuoteWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  letter-spacing: -0.04em;
 `
 
 class App extends Component {
