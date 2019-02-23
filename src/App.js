@@ -74,7 +74,7 @@ const FooterStyled = styled.footer`
   margin: 2rem;
   margin-top: 0;
   font-size: 1rem;
-  padding-top: 1rem;
+  padding-top: 2rem;
   display: flex;
   justify-content: space-between;
 `
