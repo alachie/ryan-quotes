@@ -14,8 +14,15 @@ const AppStyled = styled.div`
   background: var(--bg-color);
   color: #000;
   color: var(--fg-color);
+
   div {
     flex: 1;
+  }
+
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   ${props => (props.theme === "dark") && css`
@@ -177,7 +184,7 @@ class App extends Component {
 
     return (
       <AppStyled theme={theme}>
-        {isLoading ? <div>loading...</div> : <React.Fragment>
+        {isLoading ? <div className="loading">loading...</div> : <React.Fragment>
           <HeaderStyled>
             <h1>Ryanemzed Quotes</h1>
             <span>
