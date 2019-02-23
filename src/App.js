@@ -9,7 +9,7 @@ function parseQuotes(text) {
 const AppStyled = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100%;
   background: #fff;
   background: var(--bg-color);
   color: #000;

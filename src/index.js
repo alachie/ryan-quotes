@@ -22,6 +22,7 @@ const GlobalStyle = createGlobalStyle`
         background: #fff;
         background: var(--bg-color);
         box-sizing: border-box;
+
     }
 
     html, body, h1, h2, h3, h4, h5, h6, p, blockquote {
@@ -41,6 +42,11 @@ const GlobalStyle = createGlobalStyle`
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
         color: var(--fg-color);
+    }
+
+    html, body, #root {
+        min-height: 100%;
+        height: 100%;
     }
 `
 
